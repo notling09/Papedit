@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* Dark Mode über die Klasse .dark am <html>-Element */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Farbwelt passend zum Papedit-Logo: warmes Creme, Gold/Bronze, dunkle Tinte */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --color-cream-50: #fdfbf6;
+  --color-cream-100: #faf3e8;
+  --color-cream-200: #f3e9d8;
+  --color-cream-300: #e9dabf;
+  --color-cream-400: #dcc69f;
+
+  --color-gold-300: #d9bc8c;
+  --color-gold-400: #c9a36a;
+  --color-gold-500: #a98252;
+  --color-gold-600: #8c6a3f;
+  --color-gold-700: #6f5330;
+
+  --color-ink-950: #1c1610;
+  --color-ink-900: #2a2118;
+  --color-ink-800: #3a2f22;
+  --color-ink-700: #4d3f2f;
+  --color-ink-600: #6b5b47;
+  --color-ink-500: #8a7960;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dezente, warme Scrollbalken */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold-400) transparent;
+}
+
+/* Sanfte Übergänge beim Umschalten von Hell/Dunkel */
+.theme-transition * {
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+}

@@ -1,94 +1,97 @@
 <p align="center">
-  <img src="public/logo.png" alt="Papedit-Logo" width="220" />
+  <img src="public/logo.png" alt="PapEdit logo" width="220" />
 </p>
 
-# Papedit
+# PapEdit
 
-**Der kostenlose PDF-Editor im Browser.** Keine Uploads, keine Wasserzeichen, keine Limits,
-kein Account – alle Dateien werden ausschließlich auf deinem Gerät verarbeitet.
+**The free PDF editor in your browser.** No uploads, no watermarks, no limits,
+no account – all files are processed exclusively on your device.
 
-Der Name verbindet das portugiesische „papel" (Papier) mit „edit" (bearbeiten).
+The name combines the Portuguese word "papel" (paper) with "edit".
 
-## Funktionen
+## Features
 
-- **Öffnen & Anzeigen** – PDF per Drag-and-Drop oder Dateiauswahl öffnen, Zoom,
-  Miniaturansicht aller Seiten, schnelles Rendern durch Lazy Loading.
-- **Vorhandenen Text bearbeiten (Word-ähnlich)** – das „Text bearbeiten"-Werkzeug
-  gruppiert den PDF-Text automatisch zu Absätzen. Ein Klick deckt den Absatz in der
-  Hintergrundfarbe ab und legt den Originaltext als Feld mit automatischem
-  Zeilenumbruch darüber: mitten im Satz tippen, der Rest fließt nach – auch der
-  Original-Zeilenabstand wird übernommen. Feld leeren = Text löschen.
-- **Textbearbeitung (Overlay)** – neue Textfelder einfügen, verschieben, Schrift, Größe
-  und Farbe anpassen; vorhandenen Text abdecken und ersetzen („Redigieren & Ersetzen").
-- **Seitenverwaltung** – Seiten drehen, löschen, duplizieren, per Drag-and-Drop sortieren
-  und einzeln als PDF extrahieren.
-- **Zusammenfügen & Teilen** – mehrere PDFs zu einem verbinden, ein PDF nach
-  Seitenbereichen in mehrere Dateien aufteilen.
-- **Anmerkungen & Zeichnen** – Freihand-Stift, Textmarker, Rechteck, Ellipse, Linie,
-  Pfeil und Bilder (z. B. ein Logo) einfügen.
-- **Unterschrift & Formulare** – Unterschrift zeichnen oder als Bild laden und frei
-  platzieren; vorhandene PDF-Formularfelder direkt ausfüllen.
-- **Export** – als PDF herunterladen oder alle Seiten als PNG-Bilder exportieren.
-- **Design** – warme Farbwelt passend zum Logo, hell & dunkel, responsive.
+- **Open & view** – open PDFs via drag and drop or file picker, zoom,
+  thumbnail overview of all pages, fast rendering with lazy loading.
+- **Edit existing text (Word-like)** – the "Edit existing text" tool automatically
+  groups the PDF text into paragraphs. One click covers the paragraph in its
+  background color and places the original text on top as a field with automatic
+  line wrapping: type in the middle of a sentence and the rest reflows – the
+  original line spacing is preserved. Clear the field to delete the text.
+- **Text overlays** – insert new text fields, move them, adjust font, size and
+  color; cover and replace existing content ("redact & replace").
+- **Page management** – rotate, delete, duplicate, reorder pages via drag and
+  drop, and extract single pages as separate PDFs.
+- **Merge & split** – combine multiple PDFs into one, or split a PDF into
+  several files by page ranges.
+- **Annotate & draw** – freehand pen, highlighter, rectangle, ellipse, line,
+  arrow, and image insertion (e.g. a logo).
+- **Signature & forms** – draw a signature or load it as an image and place it
+  freely; fill existing PDF form fields directly on the page.
+- **Export** – download as PDF or export all pages as PNG images.
+- **Design** – warm color palette matching the logo, light & dark mode, responsive.
 
-## Warum ist Papedit privat?
+## Why is PapEdit private?
 
-Es gibt **kein Backend**. Die gesamte PDF-Verarbeitung läuft mit
-[PDF.js](https://mozilla.github.io/pdf.js/) (Anzeigen) und
-[pdf-lib](https://pdf-lib.js.org/) (Bearbeiten/Erstellen) direkt im Browser.
-Keine Datei verlässt jemals dein Gerät.
+There is **no backend**. All PDF processing runs directly in your browser using
+[PDF.js](https://mozilla.github.io/pdf.js/) (viewing) and
+[pdf-lib](https://pdf-lib.js.org/) (editing/creating).
+No file ever leaves your device.
 
-## Technischer Hinweis zur Textbearbeitung
+## A technical note on text editing
 
-Ein PDF speichert für jedes Zeichen eine feste Position – es gibt keine Absätze, die wie
-in Word neu umbrechen. Papedit setzt deshalb bewusst auf **Overlay-Bearbeitung**: Eine
-bearbeitbare Ebene liegt über der Seite; vorhandener Text kann überdeckt und ersetzt,
-neuer Text frei hinzugefügt werden. Das ist ehrlich, stabil und deckt die allermeisten
-Anwendungsfälle ab.
+A PDF stores a fixed position for every character – there are no paragraphs
+that reflow like in Word. PapEdit therefore deliberately uses **overlay
+editing**: an editable layer sits on top of the page; existing text can be
+covered and replaced, new text can be added freely, and the paragraph tool
+reconstructs flowing text from the character positions. This is honest, stable,
+and covers the vast majority of real-world use cases. The replacement font is a
+metrically matching standard font (Helvetica/Times/Courier), not the embedded
+original – a limitation shared by every browser-based PDF editor.
 
-## Technischer Stack
+## Tech stack
 
-| Bereich | Technologie |
+| Area | Technology |
 | --- | --- |
 | Framework | React 19 + Vite 7 |
-| Sprache | TypeScript |
-| PDF anzeigen | PDF.js (Mozilla) |
-| PDF bearbeiten | pdf-lib |
+| Language | TypeScript |
+| PDF rendering | PDF.js (Mozilla) |
+| PDF editing | pdf-lib |
 | Styling | Tailwind CSS 4 |
 | State | Zustand |
 | Icons | Lucide |
-| Hosting | Vercel oder Netlify (statisch) |
+| Hosting | Vercel or Netlify (static) |
 
-## Entwicklung
+## Development
 
 ```bash
-npm install      # Abhängigkeiten installieren
-npm run dev      # Entwicklungsserver (http://localhost:5173)
-npm run build    # Produktions-Build nach dist/
-npm run preview  # Produktions-Build lokal testen
+npm install      # install dependencies
+npm run dev      # development server (http://localhost:5173)
+npm run build    # production build into dist/
+npm run preview  # test the production build locally
 ```
 
-## Projektstruktur
+## Project structure
 
 ```
 papedit/
-├─ public/                  # Logo, statische Dateien
+├─ public/                  # logo, static files
 ├─ src/
-│  ├─ components/           # UI-Bausteine (Header, Toolbar, Seitenansicht …)
-│  │  └─ dialogs/           # Teilen- und Unterschrift-Dialog
-│  ├─ lib/                  # PDF-Logik: Laden (pdf.js), Export (pdf-lib),
-│  │                        # Koordinaten-Umrechnung, Utilities
-│  ├─ store/                # Zentraler Zustand (Zustand)
-│  └─ styles/               # Tailwind & Design-Tokens
+│  ├─ components/           # UI building blocks (header, toolbar, page view …)
+│  │  └─ dialogs/           # split and signature dialogs
+│  ├─ lib/                  # PDF logic: loading (PDF.js), export (pdf-lib),
+│  │                        # coordinate mapping, utilities
+│  ├─ store/                # central state (Zustand)
+│  └─ styles/               # Tailwind & design tokens
 └─ index.html
 ```
 
 ## Deployment
 
-Papedit ist eine rein statische Anwendung. Auf **Vercel** oder **Netlify** genügt es,
-das GitHub-Repository zu verbinden – Build-Befehl `npm run build`,
-Ausgabeverzeichnis `dist`. Fertig.
+PapEdit is a purely static application. On **Vercel** or **Netlify**, simply
+connect the GitHub repository – build command `npm run build`, output directory
+`dist`. Done.
 
-## Lizenz
+## License
 
-Frei nutzbar für private und kommerzielle Zwecke.
+Free to use for private and commercial purposes.

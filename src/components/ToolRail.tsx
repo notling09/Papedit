@@ -19,16 +19,16 @@ import { insertImageOnActivePage } from './insertImage'
 import SignatureDialog from './dialogs/SignatureDialog'
 
 const TOOLS: { tool: Tool; icon: typeof Type; label: string }[] = [
-  { tool: 'select', icon: MousePointer2, label: 'Auswählen & Verschieben' },
-  { tool: 'edittext', icon: TextCursorInput, label: 'Vorhandenen Text bearbeiten' },
-  { tool: 'text', icon: Type, label: 'Text einfügen' },
-  { tool: 'whiteout', icon: Eraser, label: 'Abdecken (Text überdecken & ersetzen)' },
-  { tool: 'draw', icon: Pencil, label: 'Freihand zeichnen' },
-  { tool: 'highlight', icon: Highlighter, label: 'Textmarker' },
-  { tool: 'rect', icon: Square, label: 'Rechteck' },
+  { tool: 'select', icon: MousePointer2, label: 'Select & move' },
+  { tool: 'edittext', icon: TextCursorInput, label: 'Edit existing text' },
+  { tool: 'text', icon: Type, label: 'Add text' },
+  { tool: 'whiteout', icon: Eraser, label: 'Whiteout (cover & replace text)' },
+  { tool: 'draw', icon: Pencil, label: 'Draw freehand' },
+  { tool: 'highlight', icon: Highlighter, label: 'Highlighter' },
+  { tool: 'rect', icon: Square, label: 'Rectangle' },
   { tool: 'ellipse', icon: Circle, label: 'Ellipse' },
-  { tool: 'line', icon: Slash, label: 'Linie' },
-  { tool: 'arrow', icon: ArrowUpRight, label: 'Pfeil' },
+  { tool: 'line', icon: Slash, label: 'Line' },
+  { tool: 'arrow', icon: ArrowUpRight, label: 'Arrow' },
 ]
 
 /** Werkzeugleiste am rechten Rand. */
@@ -42,7 +42,7 @@ export default function ToolRail() {
     const dataUrl = await new Promise<string>((resolve, reject) => {
       const reader = new FileReader()
       reader.onload = () => resolve(reader.result as string)
-      reader.onerror = () => reject(new Error('Bild konnte nicht gelesen werden'))
+      reader.onerror = () => reject(new Error('Could not read the image'))
       reader.readAsDataURL(file)
     })
     insertImageOnActivePage(dataUrl)
@@ -68,14 +68,14 @@ export default function ToolRail() {
       <div className="my-1 h-px w-8 bg-cream-300 dark:bg-ink-700" />
 
       <button
-        title="Bild einfügen (z. B. ein Logo)"
+        title="Insert image (e.g. a logo)"
         onClick={() => fileInput.current?.click()}
         className="flex h-10 w-10 items-center justify-center rounded-xl text-ink-700 transition-colors hover:bg-cream-200 dark:text-cream-200 dark:hover:bg-ink-800"
       >
         <ImagePlus size={19} />
       </button>
       <button
-        title="Unterschrift einfügen"
+        title="Insert signature"
         onClick={() => setSignatureOpen(true)}
         className="flex h-10 w-10 items-center justify-center rounded-xl text-ink-700 transition-colors hover:bg-cream-200 dark:text-cream-200 dark:hover:bg-ink-800"
       >

@@ -31,7 +31,7 @@ export default function App() {
         }
       } catch (err) {
         console.error(err)
-        alert('Diese Datei konnte leider nicht geöffnet werden.')
+        alert('Sorry, this file could not be opened.')
       } finally {
         setLoading(false)
       }
@@ -104,7 +104,7 @@ export default function App() {
       {dragActive && (
         <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-gold-500/20 backdrop-blur-[2px]">
           <div className="rounded-2xl border-2 border-dashed border-gold-500 bg-cream-50 px-10 py-8 text-xl font-semibold text-gold-700 shadow-xl dark:bg-ink-900 dark:text-gold-300">
-            PDF hier ablegen
+            Drop your PDF here
           </div>
         </div>
       )}

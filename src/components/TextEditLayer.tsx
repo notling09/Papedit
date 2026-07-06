@@ -261,7 +261,7 @@ export default function TextEditLayer({ pageRef, pageW, pageH, rot, zoom, canvas
       {paras.map((para, i) => (
         <button
           key={i}
-          title="Klicken, um diesen Absatz zu bearbeiten"
+          title="Click to edit this paragraph"
           onClick={() => editPara(para)}
           className="absolute cursor-text rounded-[2px] outline-1 outline-dashed outline-gold-400/50 transition-colors hover:bg-gold-400/25 hover:outline-gold-500"
           style={{

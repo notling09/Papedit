@@ -65,7 +65,7 @@ function PageView({ pageRef, pageNumber }: Props) {
         />
         {!rendered && (
           <div className="absolute inset-0 flex items-center justify-center text-sm text-ink-500">
-            Seite {pageNumber} …
+            Page {pageNumber} …
           </div>
         )}
         <FormLayer pageRef={pageRef} pageW={size.w} pageH={size.h} rot={rot} zoom={zoom} />

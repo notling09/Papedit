@@ -18,7 +18,7 @@ export default function StartScreen({ onOpenFiles, loading }: Props) {
       {/* Hell/Dunkel schwebend oben rechts – ganz ohne Navigationsleiste */}
       <button
         onClick={() => setDark(!dark)}
-        title={dark ? 'Heller Modus' : 'Dunkler Modus'}
+        title={dark ? 'Light mode' : 'Dark mode'}
         className="absolute top-5 right-5 flex h-10 w-10 items-center justify-center rounded-full text-ink-600 transition-colors hover:bg-cream-200 dark:text-cream-200 dark:hover:bg-ink-800"
       >
         {dark ? <Sun size={19} /> : <Moon size={19} />}
@@ -39,15 +39,15 @@ export default function StartScreen({ onOpenFiles, loading }: Props) {
         {loading ? (
           <>
             <Loader2 size={18} className="animate-spin text-gold-500" />
-            PDF wird geöffnet …
+            Opening PDF …
           </>
         ) : (
-          'PDF hierher ziehen oder klicken'
+          'Drop a PDF here or click to open'
         )}
       </button>
 
       <p className="mt-6 text-sm text-ink-500 dark:text-cream-300/50">
-        Kostenlos. Deine Dateien bleiben auf deinem Gerät.
+        Free. Your files never leave your device.
       </p>
 
       <input

@@ -98,7 +98,7 @@ const Thumbnail = memo(function Thumbnail({
     const bytes = await exportPdf(sources, pages, overlays, formValues, {
       pageSubset: [pageRef],
     })
-    downloadBlob(bytes, `${baseName(src.name)}-seite-${index + 1}.pdf`)
+    downloadBlob(bytes, `${baseName(src.name)}-page-${index + 1}.pdf`)
   }
 
   const actionCls =
@@ -130,7 +130,7 @@ const Thumbnail = memo(function Thumbnail({
         <div className="absolute top-1 right-1 flex flex-col gap-1 opacity-0 transition-opacity group-hover:opacity-100">
           <button
             className={actionCls}
-            title="90° drehen"
+            title="Rotate 90°"
             onClick={(e) => {
               e.stopPropagation()
               rotatePage(pageRef.id)
@@ -140,7 +140,7 @@ const Thumbnail = memo(function Thumbnail({
           </button>
           <button
             className={actionCls}
-            title="Seite duplizieren"
+            title="Duplicate page"
             onClick={(e) => {
               e.stopPropagation()
               duplicatePage(pageRef.id)
@@ -150,7 +150,7 @@ const Thumbnail = memo(function Thumbnail({
           </button>
           <button
             className={actionCls}
-            title="Seite als eigenes PDF speichern"
+            title="Save page as separate PDF"
             onClick={(e) => {
               e.stopPropagation()
               void extractPage()
@@ -161,7 +161,7 @@ const Thumbnail = memo(function Thumbnail({
           {pageCount > 1 && (
             <button
               className={`${actionCls} hover:bg-red-600`}
-              title="Seite löschen"
+              title="Delete page"
               onClick={(e) => {
                 e.stopPropagation()
                 deletePage(pageRef.id)

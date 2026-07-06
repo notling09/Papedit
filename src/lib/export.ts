@@ -97,7 +97,7 @@ export async function exportPdf(
 ): Promise<Uint8Array> {
   const usePages = options.pageSubset ?? pages
   const out = await PDFDocument.create()
-  out.setProducer('Papedit – kostenloser PDF-Editor im Browser')
+  out.setProducer('PapEdit – free PDF editor in your browser')
 
   // 1) Quellen vorbereiten: Formularwerte eintragen und einbetten (flatten),
   //    damit sie das Kopieren einzelner Seiten überleben.

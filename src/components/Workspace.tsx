@@ -70,7 +70,7 @@ export default function Workspace() {
         <button
           className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-cream-200 dark:hover:bg-ink-800"
           onClick={() => setZoom(zoom - 0.15)}
-          title="Verkleinern"
+          title="Zoom out"
         >
           <Minus size={15} />
         </button>
@@ -80,14 +80,14 @@ export default function Workspace() {
         <button
           className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-cream-200 dark:hover:bg-ink-800"
           onClick={() => setZoom(zoom + 0.15)}
-          title="Vergrößern"
+          title="Zoom in"
         >
           <Plus size={15} />
         </button>
         <button
           className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-cream-200 dark:hover:bg-ink-800"
           onClick={fitWidth}
-          title="An Breite anpassen"
+          title="Fit to width"
         >
           <Maximize size={14} />
         </button>

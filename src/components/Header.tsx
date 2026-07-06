@@ -39,7 +39,7 @@ export default function Header({ onOpenFiles }: Props) {
       downloadBlob(bytes, `${docName}-papedit.pdf`)
     } catch (err) {
       console.error(err)
-      alert('Beim Erstellen des PDFs ist etwas schiefgelaufen.')
+      alert('Something went wrong while creating the PDF.')
     } finally {
       setBusy(false)
     }
@@ -51,7 +51,7 @@ export default function Header({ onOpenFiles }: Props) {
     try {
       for (let i = 0; i < pages.length; i++) {
         const blob = await renderPageToPng(pages[i], sources[pages[i].srcId], 2)
-        downloadBlob(blob, `${docName}-seite-${i + 1}.png`, 'image/png')
+        downloadBlob(blob, `${docName}-page-${i + 1}.png`, 'image/png')
       }
     } finally {
       setBusy(false)
@@ -82,17 +82,17 @@ export default function Header({ onOpenFiles }: Props) {
         <>
           <button
             className={iconBtn}
-            title="Weiteres PDF anhängen (zusammenfügen)"
+            title="Append another PDF (merge)"
             onClick={() => fileInput.current?.click()}
           >
             <FilePlus2 size={18} />
           </button>
-          <button className={iconBtn} title="PDF teilen" onClick={() => setSplitOpen(true)}>
+          <button className={iconBtn} title="Split PDF" onClick={() => setSplitOpen(true)}>
             <Scissors size={18} />
           </button>
           <button
             className={iconBtn}
-            title="Seiten als PNG-Bilder exportieren"
+            title="Export pages as PNG images"
             onClick={handlePngExport}
           >
             <Images size={18} />
@@ -102,7 +102,7 @@ export default function Header({ onOpenFiles }: Props) {
 
       <button
         className={iconBtn}
-        title={dark ? 'Heller Modus' : 'Dunkler Modus'}
+        title={dark ? 'Light mode' : 'Dark mode'}
         onClick={() => setDark(!dark)}
       >
         {dark ? <Sun size={18} /> : <Moon size={18} />}
@@ -116,13 +116,13 @@ export default function Header({ onOpenFiles }: Props) {
             className="ml-1 flex items-center gap-2 rounded-lg bg-gold-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-gold-600 disabled:opacity-60"
           >
             {busy ? <Loader2 size={16} className="animate-spin" /> : <Download size={16} />}
-            Herunterladen
+            Download
           </button>
           <button
             className={iconBtn}
-            title="Dokument schließen"
+            title="Close document"
             onClick={() => {
-              if (confirm('Dokument schließen? Nicht heruntergeladene Änderungen gehen verloren.')) {
+              if (confirm('Close the document? Changes that were not downloaded will be lost.')) {
                 closeDocument()
               }
             }}

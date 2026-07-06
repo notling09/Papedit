@@ -26,7 +26,7 @@ export default function SplitDialog({ onClose }: Props) {
         const bytes = await exportPdf(sources, pages, overlays, formValues, {
           pageSubset: subset,
         })
-        downloadBlob(bytes, `${name}-teil-${i + 1}.pdf`)
+        downloadBlob(bytes, `${name}-part-${i + 1}.pdf`)
       }
       onClose()
     } finally {
@@ -45,24 +45,24 @@ export default function SplitDialog({ onClose }: Props) {
         const from = Number(m[1])
         const to = Number(m[2])
         if (from < 1 || to > pageCount || from > to) {
-          setError(`Ungültiger Bereich: ${part} (das Dokument hat ${pageCount} Seiten)`)
+          setError(`Invalid range: ${part} (the document has ${pageCount} pages)`)
           return
         }
         groups.push(Array.from({ length: to - from + 1 }, (_, i) => from + i))
       } else if (/^\d+$/.test(part)) {
         const n = Number(part)
         if (n < 1 || n > pageCount) {
-          setError(`Seite ${n} gibt es nicht (das Dokument hat ${pageCount} Seiten)`)
+          setError(`Page ${n} does not exist (the document has ${pageCount} pages)`)
           return
         }
         groups.push([n])
       } else {
-        setError(`„${part}" konnte nicht gelesen werden – erlaubt sind z. B. 3 oder 1-5`)
+        setError(`Could not read "${part}" – valid formats are e.g. 3 or 1-5`)
         return
       }
     }
     if (groups.length === 0) {
-      setError('Bitte mindestens einen Bereich angeben, z. B. 1-3, 4-6')
+      setError('Please enter at least one range, e.g. 1-3, 4-6')
       return
     }
     void doSplit(groups)
@@ -83,7 +83,7 @@ export default function SplitDialog({ onClose }: Props) {
       >
         <div className="mb-4 flex items-center justify-between">
           <h2 className="flex items-center gap-2 text-lg font-semibold">
-            <Scissors size={18} className="text-gold-500" /> PDF teilen
+            <Scissors size={18} className="text-gold-500" /> Split PDF
           </h2>
           <button
             className="rounded-lg p-1.5 hover:bg-cream-200 dark:hover:bg-ink-800"
@@ -94,11 +94,11 @@ export default function SplitDialog({ onClose }: Props) {
         </div>
 
         <p className="mb-2 text-sm text-ink-600 dark:text-cream-300/70">
-          Seitenbereiche mit Komma trennen – jeder Bereich wird eine eigene PDF-Datei.
+          Separate page ranges with commas – each range becomes its own PDF file.
         </p>
         <input
           type="text"
-          placeholder={`z. B. 1-3, 4-${pageCount}`}
+          placeholder={`e.g. 1-3, 4-${pageCount}`}
           value={ranges}
           onChange={(e) => setRanges(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && splitByRanges()}
@@ -112,7 +112,7 @@ export default function SplitDialog({ onClose }: Props) {
             onClick={splitEachPage}
             disabled={busy}
           >
-            Jede Seite einzeln
+            Each page separately
           </button>
           <button
             className="flex items-center gap-2 rounded-lg bg-gold-500 px-4 py-2 text-sm font-semibold text-white hover:bg-gold-600 disabled:opacity-60"
@@ -120,7 +120,7 @@ export default function SplitDialog({ onClose }: Props) {
             disabled={busy}
           >
             {busy && <Loader2 size={14} className="animate-spin" />}
-            Teilen &amp; herunterladen
+            Split &amp; download
           </button>
         </div>
       </div>

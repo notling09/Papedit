@@ -72,7 +72,7 @@ export default function PropertiesBar() {
             className={`${control} w-16`}
             value={t?.fontSize ?? defaults.fontSize}
             onChange={(e) => apply({ fontSize: Number(e.target.value) || 14 })}
-            title="Schriftgröße (pt)"
+            title="Font size (pt)"
           />
           <button
             className={`flex h-8 w-8 items-center justify-center rounded-md ${
@@ -81,7 +81,7 @@ export default function PropertiesBar() {
                 : 'hover:bg-cream-200 dark:hover:bg-ink-800'
             }`}
             onClick={() => apply({ bold: !(t?.bold ?? defaults.bold) })}
-            title="Fett"
+            title="Bold"
           >
             <Bold size={15} />
           </button>
@@ -92,12 +92,12 @@ export default function PropertiesBar() {
                 : 'hover:bg-cream-200 dark:hover:bg-ink-800'
             }`}
             onClick={() => apply({ italic: !(t?.italic ?? defaults.italic) })}
-            title="Kursiv"
+            title="Italic"
           >
             <Italic size={15} />
           </button>
           <label className="flex items-center gap-1.5">
-            <span className={label}>Farbe</span>
+            <span className={label}>Color</span>
             <input
               type="color"
               className="h-7 w-9 cursor-pointer rounded border-none bg-transparent"
@@ -122,13 +122,13 @@ export default function PropertiesBar() {
                   }`}
                   style={{ background: c }}
                   onClick={() => apply({ color: c }, { highlightColor: c })}
-                  title="Markerfarbe"
+                  title="Highlighter color"
                 />
               ))}
             </div>
           ) : (
             <label className="flex items-center gap-1.5">
-              <span className={label}>Farbe</span>
+              <span className={label}>Color</span>
               <input
                 type="color"
                 className="h-7 w-9 cursor-pointer rounded border-none bg-transparent"
@@ -138,7 +138,7 @@ export default function PropertiesBar() {
             </label>
           )}
           <label className="flex items-center gap-1.5">
-            <span className={label}>Stärke</span>
+            <span className={label}>Thickness</span>
             <input
               type="range"
               min={isHighlight ? 6 : 1}
@@ -158,7 +158,7 @@ export default function PropertiesBar() {
 
       {isWhiteout && (
         <label className="flex items-center gap-1.5">
-          <span className={label}>Deckfarbe</span>
+          <span className={label}>Fill color</span>
           <input
             type="color"
             className="h-7 w-9 cursor-pointer rounded border-none bg-transparent"
@@ -172,17 +172,17 @@ export default function PropertiesBar() {
 
       {context === 'edittext' && (
         <span className="text-sm text-ink-700 dark:text-cream-200">
-          Auf eine Textzeile klicken, um sie zu ändern – Feld leeren, um sie zu löschen
+          Click a paragraph to edit it – clear the field to delete the text
         </span>
       )}
 
-      {isImage && <span className={label}>Ziehen zum Verschieben, Ecke zum Skalieren</span>}
+      {isImage && <span className={label}>Drag to move, corner handle to resize</span>}
 
       {selectedOverlay && selected && (
         <button
           className="ml-1 flex h-8 w-8 items-center justify-center rounded-md text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/40"
           onClick={() => removeOverlay(selected.pageId, selected.overlayId)}
-          title="Objekt löschen (Entf)"
+          title="Delete object (Del)"
         >
           <Trash2 size={15} />
         </button>

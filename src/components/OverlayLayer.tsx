@@ -363,6 +363,7 @@ function TextItem({
         ref={textareaRef}
         value={o.text}
         placeholder="Text …"
+        aria-label="Text field"
         spellCheck={false}
         onChange={(e) => updateOverlay(pageId, o.id, { text: e.target.value })}
         onBlur={() => {

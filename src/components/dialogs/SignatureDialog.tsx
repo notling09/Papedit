@@ -76,7 +76,7 @@ export default function SignatureDialog({ onClose }: Props) {
     const dataUrl = await new Promise<string>((resolve, reject) => {
       const reader = new FileReader()
       reader.onload = () => resolve(reader.result as string)
-      reader.onerror = () => reject(new Error('Bild konnte nicht gelesen werden'))
+      reader.onerror = () => reject(new Error('Could not read the image'))
       reader.readAsDataURL(file)
     })
     insertImageOnActivePage(dataUrl)
@@ -94,7 +94,7 @@ export default function SignatureDialog({ onClose }: Props) {
       >
         <div className="mb-4 flex items-center justify-between">
           <h2 className="flex items-center gap-2 text-lg font-semibold">
-            <PenTool size={18} className="text-gold-500" /> Unterschrift
+            <PenTool size={18} className="text-gold-500" /> Signature
           </h2>
           <button
             className="rounded-lg p-1.5 hover:bg-cream-200 dark:hover:bg-ink-800"
@@ -121,28 +121,28 @@ export default function SignatureDialog({ onClose }: Props) {
               }`}
               style={{ background: c }}
               onClick={() => setColor(c)}
-              title="Stiftfarbe"
+              title="Pen color"
             />
           ))}
           <button
             className="ml-2 rounded-lg px-3 py-1.5 text-sm text-ink-600 hover:bg-cream-200 dark:text-cream-300/80 dark:hover:bg-ink-800"
             onClick={clear}
           >
-            Löschen
+            Clear
           </button>
           <div className="flex-1" />
           <button
             className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-ink-600 hover:bg-cream-200 dark:text-cream-300/80 dark:hover:bg-ink-800"
             onClick={() => fileInput.current?.click()}
           >
-            <Upload size={14} /> Bild laden
+            <Upload size={14} /> Upload image
           </button>
           <button
             className="rounded-lg bg-gold-500 px-4 py-2 text-sm font-semibold text-white hover:bg-gold-600 disabled:opacity-50"
             onClick={insert}
             disabled={empty}
           >
-            Einfügen
+            Insert
           </button>
         </div>
 

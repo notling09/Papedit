@@ -25,6 +25,14 @@
   --color-ink-700: #4d3f2f;
   --color-ink-600: #6b5b47;
   --color-ink-500: #8a7960;
+
+  /* Dark-Mode-Flächen: ruhiges, entsättigtes Aubergine/Lila (nur im Dark Mode) */
+  --color-plum-950: #17131f;
+  --color-plum-900: #211b2e;
+  --color-plum-800: #2f2740;
+  --color-plum-700: #40365a;
+  /* Lila-Akzent, passend zum Dark Mode (z. B. Logo-Schrift) */
+  --color-plum-300: #cfc2ef;
 }
 
 html,

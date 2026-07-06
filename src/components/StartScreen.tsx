@@ -19,13 +19,13 @@ export default function StartScreen({ onOpenFiles, loading }: Props) {
       <button
         onClick={() => setDark(!dark)}
         title={dark ? 'Light mode' : 'Dark mode'}
-        className="absolute top-5 right-5 flex h-10 w-10 items-center justify-center rounded-full text-ink-600 transition-colors hover:bg-cream-200 dark:text-cream-200 dark:hover:bg-ink-800"
+        className="absolute top-5 right-5 flex h-10 w-10 items-center justify-center rounded-full text-ink-600 transition-colors hover:bg-cream-200 dark:text-cream-200 dark:hover:bg-plum-800"
       >
         {dark ? <Sun size={19} /> : <Moon size={19} />}
       </button>
 
       <img
-        src="/logo.png"
+        src={dark ? '/logo-dark.png' : '/logo.png'}
         alt="PapEdit"
         className="mb-10 w-full max-w-md select-none"
         draggable={false}
@@ -34,7 +34,7 @@ export default function StartScreen({ onOpenFiles, loading }: Props) {
       <button
         onClick={() => fileInput.current?.click()}
         disabled={loading}
-        className="flex w-full max-w-md items-center justify-center gap-3 rounded-2xl border border-dashed border-gold-400/70 px-8 py-10 text-base font-medium text-ink-700 transition-colors hover:border-gold-500 hover:bg-cream-200/50 disabled:opacity-60 dark:text-cream-200 dark:hover:bg-ink-900"
+        className="flex w-full max-w-md items-center justify-center gap-3 rounded-2xl border border-dashed border-gold-400/70 px-8 py-10 text-base font-medium text-ink-700 transition-colors hover:border-gold-500 hover:bg-cream-200/50 disabled:opacity-60 dark:text-cream-200 dark:hover:bg-plum-900"
       >
         {loading ? (
           <>

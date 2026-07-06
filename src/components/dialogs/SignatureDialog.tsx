@@ -85,11 +85,11 @@ export default function SignatureDialog({ onClose }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/50 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-plum-950/50 p-4 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-lg rounded-2xl border border-cream-300 bg-cream-50 p-6 shadow-2xl dark:border-ink-700 dark:bg-ink-900"
+        className="w-full max-w-lg rounded-2xl border border-cream-300 bg-cream-50 p-6 shadow-2xl dark:border-plum-700 dark:bg-plum-900"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">
@@ -97,7 +97,7 @@ export default function SignatureDialog({ onClose }: Props) {
             <PenTool size={18} className="text-gold-500" /> Signature
           </h2>
           <button
-            className="rounded-lg p-1.5 hover:bg-cream-200 dark:hover:bg-ink-800"
+            className="rounded-lg p-1.5 hover:bg-cream-200 dark:hover:bg-plum-800"
             onClick={onClose}
           >
             <X size={18} />
@@ -125,14 +125,14 @@ export default function SignatureDialog({ onClose }: Props) {
             />
           ))}
           <button
-            className="ml-2 rounded-lg px-3 py-1.5 text-sm text-ink-600 hover:bg-cream-200 dark:text-cream-300/80 dark:hover:bg-ink-800"
+            className="ml-2 rounded-lg px-3 py-1.5 text-sm text-ink-600 hover:bg-cream-200 dark:text-cream-300/80 dark:hover:bg-plum-800"
             onClick={clear}
           >
             Clear
           </button>
           <div className="flex-1" />
           <button
-            className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-ink-600 hover:bg-cream-200 dark:text-cream-300/80 dark:hover:bg-ink-800"
+            className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-ink-600 hover:bg-cream-200 dark:text-cream-300/80 dark:hover:bg-plum-800"
             onClick={() => fileInput.current?.click()}
           >
             <Upload size={14} /> Upload image

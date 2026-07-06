@@ -84,7 +84,7 @@ export default function FormLayer({ pageRef, pageW, pageH, rot, zoom }: Props) {
 
         const stored = values?.[f.name]
         const cls =
-          'absolute border border-gold-400/50 bg-gold-400/10 outline-none transition-colors hover:bg-gold-400/20 focus:border-gold-500 focus:bg-white/70 dark:focus:bg-ink-900/70'
+          'absolute border border-gold-400/50 bg-gold-400/10 outline-none transition-colors hover:bg-gold-400/20 focus:border-gold-500 focus:bg-white/70 dark:focus:bg-plum-900/70'
         const style = { left, top, width: w, height: h, fontSize: Math.min(h * 0.55, 14 * zoom) }
 
         switch (f.kind) {

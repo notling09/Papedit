@@ -84,7 +84,7 @@ export default function App() {
   }, [selected, removeOverlay, deselect, setTool])
 
   return (
-    <div className="flex h-full flex-col bg-cream-100 text-ink-900 dark:bg-ink-950 dark:text-cream-100">
+    <div className="flex h-full flex-col bg-cream-100 text-ink-900 dark:bg-plum-950 dark:text-cream-100">
       {hasDocument ? (
         <>
           <Header onOpenFiles={openFiles} />
@@ -103,7 +103,7 @@ export default function App() {
 
       {dragActive && (
         <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-gold-500/20 backdrop-blur-[2px]">
-          <div className="rounded-2xl border-2 border-dashed border-gold-500 bg-cream-50 px-10 py-8 text-xl font-semibold text-gold-700 shadow-xl dark:bg-ink-900 dark:text-gold-300">
+          <div className="rounded-2xl border-2 border-dashed border-gold-500 bg-cream-50 px-10 py-8 text-xl font-semibold text-gold-700 shadow-xl dark:bg-plum-900 dark:text-gold-300">
             Drop your PDF here
           </div>
         </div>

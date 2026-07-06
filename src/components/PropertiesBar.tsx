@@ -48,10 +48,10 @@ export default function PropertiesBar() {
 
   const label = 'text-xs text-ink-500 dark:text-cream-300/60'
   const control =
-    'h-8 rounded-md border border-cream-300 bg-white px-1.5 text-sm outline-none focus:border-gold-500 dark:border-ink-700 dark:bg-ink-800'
+    'h-8 rounded-md border border-cream-300 bg-white px-1.5 text-sm outline-none focus:border-gold-500 dark:border-plum-700 dark:bg-plum-800'
 
   return (
-    <div className="absolute top-3 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2.5 rounded-full border border-cream-300 bg-cream-50/95 px-4 py-1.5 shadow-lg backdrop-blur dark:border-ink-700 dark:bg-ink-900/95">
+    <div className="absolute top-3 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2.5 rounded-full border border-cream-300 bg-cream-50/95 px-4 py-1.5 shadow-lg backdrop-blur dark:border-plum-700 dark:bg-plum-900/95">
       {isText && (
         <>
           <select
@@ -78,7 +78,7 @@ export default function PropertiesBar() {
             className={`flex h-8 w-8 items-center justify-center rounded-md ${
               (t?.bold ?? defaults.bold)
                 ? 'bg-gold-500 text-white'
-                : 'hover:bg-cream-200 dark:hover:bg-ink-800'
+                : 'hover:bg-cream-200 dark:hover:bg-plum-800'
             }`}
             onClick={() => apply({ bold: !(t?.bold ?? defaults.bold) })}
             title="Bold"
@@ -89,7 +89,7 @@ export default function PropertiesBar() {
             className={`flex h-8 w-8 items-center justify-center rounded-md ${
               (t?.italic ?? defaults.italic)
                 ? 'bg-gold-500 text-white'
-                : 'hover:bg-cream-200 dark:hover:bg-ink-800'
+                : 'hover:bg-cream-200 dark:hover:bg-plum-800'
             }`}
             onClick={() => apply({ italic: !(t?.italic ?? defaults.italic) })}
             title="Italic"

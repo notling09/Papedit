@@ -16,7 +16,7 @@ export default function ThumbnailSidebar() {
   const dragFrom = useRef<number | null>(null)
 
   return (
-    <aside className="z-20 hidden w-40 shrink-0 overflow-y-auto border-r border-cream-300 bg-cream-50 px-3 py-3 md:block dark:border-ink-800 dark:bg-ink-900">
+    <aside className="z-20 hidden w-40 shrink-0 overflow-y-auto border-r border-cream-300 bg-cream-50 px-3 py-3 md:block dark:border-plum-800 dark:bg-plum-900">
       <div className="flex flex-col gap-3">
         {pages.map((page, index) => (
           <div key={page.id} className="relative">
@@ -102,7 +102,7 @@ const Thumbnail = memo(function Thumbnail({
   }
 
   const actionCls =
-    'flex h-6 w-6 items-center justify-center rounded bg-cream-50/95 text-ink-700 shadow hover:bg-gold-500 hover:text-white dark:bg-ink-800/95 dark:text-cream-200'
+    'flex h-6 w-6 items-center justify-center rounded bg-cream-50/95 text-ink-700 shadow hover:bg-gold-500 hover:text-white dark:bg-plum-800/95 dark:text-cream-200'
 
   return (
     <div

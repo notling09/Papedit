@@ -59,17 +59,17 @@ export default function Header({ onOpenFiles }: Props) {
   }
 
   const iconBtn =
-    'flex h-9 w-9 items-center justify-center rounded-lg text-ink-700 transition-colors hover:bg-cream-200 dark:text-cream-200 dark:hover:bg-ink-800'
+    'flex h-9 w-9 items-center justify-center rounded-lg text-ink-700 transition-colors hover:bg-cream-200 dark:text-cream-200 dark:hover:bg-plum-800'
 
   return (
-    <header className="z-30 flex h-14 shrink-0 items-center gap-2 border-b border-cream-300 bg-cream-50 px-4 shadow-sm dark:border-ink-800 dark:bg-ink-900">
+    <header className="z-30 flex h-14 shrink-0 items-center gap-2 border-b border-cream-300 bg-cream-50 px-4 shadow-sm dark:border-plum-800 dark:bg-plum-900">
       <img src="/icon.png" alt="PapEdit" className="h-11 w-auto select-none" />
       <span className="mr-2 text-lg font-bold tracking-tight text-ink-900 dark:text-cream-50">
         Pap<span className="text-gold-500">Edit</span>
       </span>
 
       {hasDocument && (
-        <span className="hidden max-w-64 truncate rounded-full bg-cream-200 px-3 py-1 text-xs font-medium text-ink-700 md:block dark:bg-ink-800 dark:text-cream-200">
+        <span className="hidden max-w-64 truncate rounded-full bg-cream-200 px-3 py-1 text-xs font-medium text-ink-700 md:block dark:bg-plum-800 dark:text-cream-200">
           {Object.values(sources)
             .map((s) => s.name)
             .join(' + ')}

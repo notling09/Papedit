@@ -54,7 +54,7 @@ export default function Workspace() {
   return (
     <div
       ref={containerRef}
-      className="relative flex-1 overflow-auto bg-cream-200/70 dark:bg-ink-950"
+      className="relative flex-1 overflow-auto bg-cream-200/70 dark:bg-plum-950"
       onPointerDown={(e) => {
         if (e.target === containerRef.current) deselect()
       }}
@@ -66,9 +66,9 @@ export default function Workspace() {
       </div>
 
       {/* Schwebende Zoom-Steuerung */}
-      <div className="sticky bottom-4 left-1/2 z-20 flex w-fit -translate-x-1/2 items-center gap-1 rounded-full border border-cream-300 bg-cream-50/95 px-2 py-1 shadow-lg backdrop-blur dark:border-ink-700 dark:bg-ink-900/95">
+      <div className="sticky bottom-4 left-1/2 z-20 flex w-fit -translate-x-1/2 items-center gap-1 rounded-full border border-cream-300 bg-cream-50/95 px-2 py-1 shadow-lg backdrop-blur dark:border-plum-700 dark:bg-plum-900/95">
         <button
-          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-cream-200 dark:hover:bg-ink-800"
+          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-cream-200 dark:hover:bg-plum-800"
           onClick={() => setZoom(zoom - 0.15)}
           title="Zoom out"
         >
@@ -78,14 +78,14 @@ export default function Workspace() {
           {Math.round(zoom * 100)} %
         </span>
         <button
-          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-cream-200 dark:hover:bg-ink-800"
+          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-cream-200 dark:hover:bg-plum-800"
           onClick={() => setZoom(zoom + 0.15)}
           title="Zoom in"
         >
           <Plus size={15} />
         </button>
         <button
-          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-cream-200 dark:hover:bg-ink-800"
+          className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-cream-200 dark:hover:bg-plum-800"
           onClick={fitWidth}
           title="Fit to width"
         >

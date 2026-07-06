@@ -74,11 +74,11 @@ export default function SplitDialog({ onClose }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/50 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-plum-950/50 p-4 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-2xl border border-cream-300 bg-cream-50 p-6 shadow-2xl dark:border-ink-700 dark:bg-ink-900"
+        className="w-full max-w-md rounded-2xl border border-cream-300 bg-cream-50 p-6 shadow-2xl dark:border-plum-700 dark:bg-plum-900"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">
@@ -86,7 +86,7 @@ export default function SplitDialog({ onClose }: Props) {
             <Scissors size={18} className="text-gold-500" /> Split PDF
           </h2>
           <button
-            className="rounded-lg p-1.5 hover:bg-cream-200 dark:hover:bg-ink-800"
+            className="rounded-lg p-1.5 hover:bg-cream-200 dark:hover:bg-plum-800"
             onClick={onClose}
           >
             <X size={18} />
@@ -102,13 +102,13 @@ export default function SplitDialog({ onClose }: Props) {
           value={ranges}
           onChange={(e) => setRanges(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && splitByRanges()}
-          className="mb-2 w-full rounded-lg border border-cream-300 bg-white px-3 py-2 text-sm outline-none focus:border-gold-500 dark:border-ink-700 dark:bg-ink-800"
+          className="mb-2 w-full rounded-lg border border-cream-300 bg-white px-3 py-2 text-sm outline-none focus:border-gold-500 dark:border-plum-700 dark:bg-plum-800"
         />
         {error && <p className="mb-2 text-sm text-red-600 dark:text-red-400">{error}</p>}
 
         <div className="mt-4 flex items-center justify-between gap-2">
           <button
-            className="rounded-lg px-3 py-2 text-sm text-ink-600 hover:bg-cream-200 disabled:opacity-50 dark:text-cream-300/80 dark:hover:bg-ink-800"
+            className="rounded-lg px-3 py-2 text-sm text-ink-600 hover:bg-cream-200 disabled:opacity-50 dark:text-cream-300/80 dark:hover:bg-plum-800"
             onClick={splitEachPage}
             disabled={busy}
           >

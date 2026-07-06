@@ -22,10 +22,17 @@ import type {
 import { displayToPdf, displayRectToPdf, normalizeRotation } from './coords'
 import { hexToRgb } from './utils'
 
-/** Zeilenhöhe der Textfelder – muss zur CSS-Darstellung (line-height: 1.25) passen. */
+/** Standard-Zeilenhöhe der Textfelder – muss zur CSS-Darstellung passen. */
 export const TEXT_LINE_HEIGHT = 1.25
-/** Ungefährer Abstand der Baseline vom oberen Zeilenrand (CSS-Half-Leading). */
-export const TEXT_BASELINE = 0.93
+
+/**
+ * Abstand der Baseline vom oberen Zeilenrand als Faktor der Schriftgröße.
+ * CSS verteilt den Durchschuss halb über, halb unter die Glyphen (Half-Leading);
+ * die Ascent liegt bei den Standardschriften bei rund 0,8 em.
+ */
+export function baselineFactor(lineHeight: number): number {
+  return (lineHeight - 1) / 2 + 0.8
+}
 
 const FONT_MAP: Record<FontFamily, Record<string, StandardFonts>> = {
   Helvetica: {
@@ -205,6 +212,32 @@ function drawWhiteout(page: PDFPage, o: WhiteoutOverlay, W: number, H: number, r
   })
 }
 
+/**
+ * Fließtext an der Feldbreite umbrechen – mit den Metriken der
+ * eingebetteten PDF-Schrift, damit der Export der Anzeige entspricht.
+ */
+function wrapLines(text: string, font: PDFFont, size: number, maxW: number): string[] {
+  const out: string[] = []
+  for (const logical of text.split('\n')) {
+    if (!logical) {
+      out.push('')
+      continue
+    }
+    let line = ''
+    for (const word of logical.split(' ')) {
+      const candidate = line ? `${line} ${word}` : word
+      if (!line || font.widthOfTextAtSize(candidate, size) <= maxW) {
+        line = candidate
+      } else {
+        out.push(line)
+        line = word
+      }
+    }
+    out.push(line)
+  }
+  return out
+}
+
 async function drawText(
   page: PDFPage,
   o: TextOverlay,
@@ -215,15 +248,17 @@ async function drawText(
 ) {
   const font = await getFont(fontVariant(o))
   const c = hexToRgb(o.color)
-  const lineH = o.fontSize * TEXT_LINE_HEIGHT
-  const lines = sanitizeForFont(o.text, font).split('\n')
+  const lh = o.lineHeight ?? TEXT_LINE_HEIGHT
+  const lineH = o.fontSize * lh
+  const clean = sanitizeForFont(o.text, font)
+  const lines = o.wrap ? wrapLines(clean, font, o.fontSize, o.w) : clean.split('\n')
 
   // Jede Zeile einzeln zeichnen: Baseline im Anzeige-Raum bestimmen,
   // in den PDF-Raum abbilden und – bei gedrehten Seiten – mitdrehen,
   // damit der Text auf dem Bildschirm waagerecht bleibt.
   lines.forEach((line, i) => {
     if (!line) return
-    const baselineY = o.y + i * lineH + o.fontSize * TEXT_BASELINE
+    const baselineY = o.y + i * lineH + o.fontSize * baselineFactor(lh)
     const p = displayToPdf(o.x, baselineY, W, H, rot)
     page.drawText(line, {
       x: p.x,

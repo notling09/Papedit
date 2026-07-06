@@ -10,6 +10,7 @@ import {
   Pencil,
   Slash,
   Square,
+  TextCursorInput,
   Type,
 } from 'lucide-react'
 import type { Tool } from '../lib/types'
@@ -19,6 +20,7 @@ import SignatureDialog from './dialogs/SignatureDialog'
 
 const TOOLS: { tool: Tool; icon: typeof Type; label: string }[] = [
   { tool: 'select', icon: MousePointer2, label: 'Auswählen & Verschieben' },
+  { tool: 'edittext', icon: TextCursorInput, label: 'Vorhandenen Text bearbeiten' },
   { tool: 'text', icon: Type, label: 'Text einfügen' },
   { tool: 'whiteout', icon: Eraser, label: 'Abdecken (Text überdecken & ersetzen)' },
   { tool: 'draw', icon: Pencil, label: 'Freihand zeichnen' },

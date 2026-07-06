@@ -85,17 +85,18 @@ export default function App() {
 
   return (
     <div className="flex h-full flex-col bg-cream-100 text-ink-900 dark:bg-ink-950 dark:text-cream-100">
-      <Header onOpenFiles={openFiles} />
-
       {hasDocument ? (
-        <div className="relative flex min-h-0 flex-1">
-          <ThumbnailSidebar />
-          <div className="relative flex min-w-0 flex-1 flex-col">
-            <PropertiesBar />
-            <Workspace />
+        <>
+          <Header onOpenFiles={openFiles} />
+          <div className="relative flex min-h-0 flex-1">
+            <ThumbnailSidebar />
+            <div className="relative flex min-w-0 flex-1 flex-col">
+              <PropertiesBar />
+              <Workspace />
+            </div>
+            <ToolRail />
           </div>
-          <ToolRail />
-        </div>
+        </>
       ) : (
         <StartScreen onOpenFiles={openFiles} loading={loading} />
       )}

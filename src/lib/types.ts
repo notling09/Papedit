@@ -17,6 +17,10 @@ export interface TextOverlay {
   font: FontFamily
   bold: boolean
   italic: boolean
+  /** true = Text bricht an der Feldbreite automatisch um (Absatz-Bearbeitung). */
+  wrap?: boolean
+  /** Zeilenhöhe als Faktor der Schriftgröße (Standard 1.25). */
+  lineHeight?: number
 }
 
 /** Deckfläche, um vorhandenen Text zu „redigieren & ersetzen“. */
@@ -74,6 +78,7 @@ export type Overlay =
 
 export type Tool =
   | 'select'
+  | 'edittext'
   | 'text'
   | 'whiteout'
   | 'draw'

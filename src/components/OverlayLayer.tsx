@@ -64,7 +64,7 @@ export default function OverlayLayer({ pageRef, dispW, dispH, zoom }: Props) {
   }
 
   const handlePointerDown = (e: ReactPointerEvent) => {
-    if (tool === 'select' || e.button !== 0) return
+    if (tool === 'select' || tool === 'edittext' || e.button !== 0) return
     e.preventDefault()
     const p = toPt(e)
 
@@ -166,6 +166,9 @@ export default function OverlayLayer({ pageRef, dispW, dispH, zoom }: Props) {
   }
 
   const isSelectMode = tool === 'select'
+  // In diesen Modi lässt die Ebene Klicks zu den Schichten darunter durch
+  // (Formularfelder bzw. „Text bearbeiten“-Ebene)
+  const passthrough = tool === 'select' || tool === 'edittext'
   const vectorOverlays = overlays.filter(
     (o): o is DrawOverlay | ShapeOverlay =>
       o.type === 'draw' || o.type === 'highlight' || o.type === 'rect' ||
@@ -179,8 +182,8 @@ export default function OverlayLayer({ pageRef, dispW, dispH, zoom }: Props) {
       ref={containerRef}
       className="absolute inset-0 touch-none"
       style={{
-        pointerEvents: isSelectMode ? 'none' : 'auto',
-        cursor: isSelectMode ? undefined : tool === 'text' ? 'text' : 'crosshair',
+        pointerEvents: passthrough ? 'none' : 'auto',
+        cursor: passthrough ? undefined : tool === 'text' ? 'text' : 'crosshair',
       }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
@@ -332,10 +335,15 @@ function TextItem({
     }
   }, [o.text, o.fontSize, o.w, zoom])
 
-  // Neues, leeres Feld direkt fokussieren
+  // Frisch erstellte Felder (leer oder aus „Text bearbeiten“) direkt fokussieren
   useEffect(() => {
-    if (isSelected && o.text === '') textareaRef.current?.focus()
-  }, [isSelected, o.text])
+    if (isSelected) {
+      const el = textareaRef.current
+      el?.focus()
+      el?.setSelectionRange(el.value.length, el.value.length)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div
@@ -363,12 +371,14 @@ function TextItem({
         className="block w-full resize-none overflow-hidden bg-transparent outline-none placeholder:text-ink-500/40"
         style={{
           fontSize: o.fontSize * zoom,
-          lineHeight: TEXT_LINE_HEIGHT,
+          lineHeight: o.lineHeight ?? TEXT_LINE_HEIGHT,
           color: o.color,
           fontFamily: FONT_CSS[o.font],
           fontWeight: o.bold ? 700 : 400,
           fontStyle: o.italic ? 'italic' : 'normal',
-          whiteSpace: 'pre',
+          // Absatz-Felder brechen wie in Word an der Feldbreite um
+          whiteSpace: o.wrap ? 'pre-wrap' : 'pre',
+          overflowWrap: o.wrap ? 'break-word' : 'normal',
         }}
       />
       {isSelected && (

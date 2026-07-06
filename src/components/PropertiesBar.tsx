@@ -170,6 +170,12 @@ export default function PropertiesBar() {
         </label>
       )}
 
+      {context === 'edittext' && (
+        <span className="text-sm text-ink-700 dark:text-cream-200">
+          Auf eine Textzeile klicken, um sie zu ändern – Feld leeren, um sie zu löschen
+        </span>
+      )}
+
       {isImage && <span className={label}>Ziehen zum Verschieben, Ecke zum Skalieren</span>}
 
       {selectedOverlay && selected && (

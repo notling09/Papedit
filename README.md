@@ -13,6 +13,11 @@ Der Name verbindet das portugiesische „papel" (Papier) mit „edit" (bearbeite
 
 - **Öffnen & Anzeigen** – PDF per Drag-and-Drop oder Dateiauswahl öffnen, Zoom,
   Miniaturansicht aller Seiten, schnelles Rendern durch Lazy Loading.
+- **Vorhandenen Text bearbeiten (Word-ähnlich)** – das „Text bearbeiten"-Werkzeug
+  gruppiert den PDF-Text automatisch zu Absätzen. Ein Klick deckt den Absatz in der
+  Hintergrundfarbe ab und legt den Originaltext als Feld mit automatischem
+  Zeilenumbruch darüber: mitten im Satz tippen, der Rest fließt nach – auch der
+  Original-Zeilenabstand wird übernommen. Feld leeren = Text löschen.
 - **Textbearbeitung (Overlay)** – neue Textfelder einfügen, verschieben, Schrift, Größe
   und Farbe anpassen; vorhandenen Text abdecken und ersetzen („Redigieren & Ersetzen").
 - **Seitenverwaltung** – Seiten drehen, löschen, duplizieren, per Drag-and-Drop sortieren

@@ -5,6 +5,7 @@ import { displaySize } from '../lib/coords'
 import { renderPageToCanvas } from './pageRender'
 import OverlayLayer from './OverlayLayer'
 import FormLayer from './FormLayer'
+import TextEditLayer from './TextEditLayer'
 
 interface Props {
   pageRef: PageRef
@@ -15,6 +16,7 @@ interface Props {
 function PageView({ pageRef, pageNumber }: Props) {
   const src = useStore((s) => s.sources[pageRef.srcId])
   const zoom = useStore((s) => s.zoom)
+  const tool = useStore((s) => s.tool)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
@@ -67,6 +69,16 @@ function PageView({ pageRef, pageNumber }: Props) {
           </div>
         )}
         <FormLayer pageRef={pageRef} pageW={size.w} pageH={size.h} rot={rot} zoom={zoom} />
+        {tool === 'edittext' && (
+          <TextEditLayer
+            pageRef={pageRef}
+            pageW={size.w}
+            pageH={size.h}
+            rot={rot}
+            zoom={zoom}
+            canvasRef={canvasRef}
+          />
+        )}
         <OverlayLayer pageRef={pageRef} dispW={disp.w} dispH={disp.h} zoom={zoom} />
       </div>
       <div className="mt-1.5 text-center text-xs text-ink-500 dark:text-cream-300/50">

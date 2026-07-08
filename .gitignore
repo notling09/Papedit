@@ -4,10 +4,11 @@ dist-ssr
 *.local
 .DS_Store
 
-# Editor
+# Editor & local tooling
 .vscode/*
 !.vscode/extensions.json
 .idea
+.claude/
 
 # Logs
 logs
